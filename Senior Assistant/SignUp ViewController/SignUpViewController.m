@@ -7,6 +7,7 @@
 //
 
 #import "SignUpViewController.h"
+#import "Parse/Parse.h"
 
 @interface SignUpViewController ()
 
@@ -17,14 +18,38 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
 }
 
-- (void)didReceiveMemoryWarning
+- (void) didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+- (IBAction)registerUser:(id)sender
+{
+    PFUser *newUser = [PFUser user];
+
+    newUser.username = self.userName.text;
+    newUser.email = self.emailField.text;
+    newUser.password = self.passwordField.text;
+
+    [newUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError * error)
+    {
+         if (error != nil)
+         {
+             NSLog(@"Error: %@", error.localizedDescription);
+         }
+         else
+         {
+             NSLog(@"User registered successfully");
+         }
+     }];
+}
+
+
+
+
 
 /*
 #pragma mark - Navigation

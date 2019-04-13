@@ -8,7 +8,8 @@
 
 #import "AssistantSeekerViewController.h"
 
-@interface AssistantSeekerViewController ()
+@interface AssistantSeekerViewController ()<UITableViewDataSource, UITableViewDelegate>
+@property (weak, nonatomic) IBOutlet UITableView *recentMessages;
 
 @end
 
@@ -18,12 +19,27 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    self.recentMessages.dataSource = self;
+    self.recentMessages.delegate = self;
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 20;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = [[UITableViewCell alloc] init];
+    cell.textLabel.text = [NSString stringWithFormat:@"rows: %d, section %d", indexPath.row, indexPath.section];
+    return cell;
 }
 
 /*

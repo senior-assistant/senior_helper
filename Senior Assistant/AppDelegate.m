@@ -25,7 +25,6 @@
         configuration.server = @"http://senior-assister.herokuapp.com/parse";
     }];
     [Parse initializeWithConfiguration:config];
-    
     return YES;
 }
 

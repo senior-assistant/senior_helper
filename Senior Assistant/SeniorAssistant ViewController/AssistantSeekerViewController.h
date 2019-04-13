@@ -10,4 +10,6 @@
 
 @interface AssistantSeekerViewController : UIViewController
 
+@property(strong, nonatomic) NSString* currentUserName;
+
 @end

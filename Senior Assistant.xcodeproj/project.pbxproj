@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		378B5ABA2262CD1500CD77C9 /* RecentMessagesCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 378B5AB92262CD1500CD77C9 /* RecentMessagesCell.m */; };
 		62183485225D45DA0003B79C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 62183484225D45DA0003B79C /* AppDelegate.m */; };
 		6218348D225D45DD0003B79C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6218348C225D45DD0003B79C /* Assets.xcassets */; };
 		62183490225D45DD0003B79C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6218348E225D45DD0003B79C /* LaunchScreen.storyboard */; };
@@ -45,6 +46,8 @@
 /* Begin PBXFileReference section */
 		0C8D6F7653A60342ED2B65B5 /* libPods-Senior Assistant.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Senior Assistant.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2EB9706ACAE65DD1832542DB /* Pods-Senior AssistantTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Senior AssistantTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Senior AssistantTests/Pods-Senior AssistantTests.debug.xcconfig"; sourceTree = "<group>"; };
+		378B5AB82262CD1500CD77C9 /* RecentMessagesCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RecentMessagesCell.h; sourceTree = "<group>"; };
+		378B5AB92262CD1500CD77C9 /* RecentMessagesCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RecentMessagesCell.m; sourceTree = "<group>"; };
 		3C8DF64CCF1F098422599653 /* libPods-Senior AssistantTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Senior AssistantTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A849B2E17FD628E868161C4 /* libPods-Senior AssistantUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Senior AssistantUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5DBE17AE174D94182B9E0B15 /* Pods-Senior AssistantUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Senior AssistantUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Senior AssistantUITests/Pods-Senior AssistantUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -106,6 +109,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		378B5AB72262C9F000CD77C9 /* assistantSeekerCell */ = {
+			isa = PBXGroup;
+			children = (
+				378B5AB82262CD1500CD77C9 /* RecentMessagesCell.h */,
+				378B5AB92262CD1500CD77C9 /* RecentMessagesCell.m */,
+			);
+			path = assistantSeekerCell;
+			sourceTree = "<group>";
+		};
 		62183477225D45DA0003B79C = {
 			isa = PBXGroup;
 			children = (
@@ -137,6 +149,7 @@
 				621834B6225D46CD0003B79C /* SignUp StoryBoard */,
 				621834BF225D4F820003B79C /* SeniorAssistant StoryBoard */,
 				621834B5225D46C80003B79C /* SeniorAssistant ViewController */,
+				378B5AB72262C9F000CD77C9 /* assistantSeekerCell */,
 				6218348C225D45DD0003B79C /* Assets.xcassets */,
 				6218348E225D45DD0003B79C /* LaunchScreen.storyboard */,
 				62183491225D45DD0003B79C /* Info.plist */,
@@ -452,6 +465,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				378B5ABA2262CD1500CD77C9 /* RecentMessagesCell.m in Sources */,
 				62277C50225D824700B07F67 /* AssistantProviderViewController.m in Sources */,
 				62183493225D45DD0003B79C /* main.m in Sources */,
 				62277C57225D8B4700B07F67 /* SignUpViewController.m in Sources */,

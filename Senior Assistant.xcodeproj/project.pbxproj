@@ -17,6 +17,7 @@
 		6218349D225D45DD0003B79C /* Senior_AssistantTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6218349C225D45DD0003B79C /* Senior_AssistantTests.m */; };
 		621834A8225D45DD0003B79C /* Senior_AssistantUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 621834A7225D45DD0003B79C /* Senior_AssistantUITests.m */; };
 		621834BE225D4F120003B79C /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 621834BD225D4F120003B79C /* SignUp.storyboard */; };
+		621CF2B52266C69E009103AA /* mesageViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 621CF2B42266C69E009103AA /* mesageViewCell.m */; };
 		62277C42225D813700B07F67 /* SeniorAssistantSeeker.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62277C41225D813700B07F67 /* SeniorAssistantSeeker.storyboard */; };
 		62277C44225D817900B07F67 /* SeniorAssistantProvider.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62277C43225D817900B07F67 /* SeniorAssistantProvider.storyboard */; };
 		62277C4D225D823000B07F67 /* AssistantSeekerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 62277C4C225D823000B07F67 /* AssistantSeekerViewController.m */; };
@@ -71,6 +72,8 @@
 		621834A7225D45DD0003B79C /* Senior_AssistantUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Senior_AssistantUITests.m; sourceTree = "<group>"; };
 		621834A9225D45DD0003B79C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		621834BD225D4F120003B79C /* SignUp.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
+		621CF2B32266C69E009103AA /* mesageViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = mesageViewCell.h; sourceTree = "<group>"; };
+		621CF2B42266C69E009103AA /* mesageViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = mesageViewCell.m; sourceTree = "<group>"; };
 		62277C41225D813700B07F67 /* SeniorAssistantSeeker.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SeniorAssistantSeeker.storyboard; sourceTree = "<group>"; };
 		62277C43225D817900B07F67 /* SeniorAssistantProvider.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SeniorAssistantProvider.storyboard; sourceTree = "<group>"; };
 		62277C4B225D823000B07F67 /* AssistantSeekerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AssistantSeekerViewController.h; sourceTree = "<group>"; };
@@ -122,6 +125,8 @@
 				378B5AB92262CD1500CD77C9 /* RecentMessagesCell.m */,
 				378B5ABB2262F5CB00CD77C9 /* AvailableAssistantsCell.h */,
 				378B5ABC2262F5CB00CD77C9 /* AvailableAssistantsCell.m */,
+				621CF2B32266C69E009103AA /* mesageViewCell.h */,
+				621CF2B42266C69E009103AA /* mesageViewCell.m */,
 			);
 			path = assistantSeekerCell;
 			sourceTree = "<group>";
@@ -463,6 +468,7 @@
 				62277C50225D824700B07F67 /* AssistantProviderViewController.m in Sources */,
 				378B5ABD2262F5CB00CD77C9 /* AvailableAssistantsCell.m in Sources */,
 				62183493225D45DD0003B79C /* main.m in Sources */,
+				621CF2B52266C69E009103AA /* mesageViewCell.m in Sources */,
 				62277C57225D8B4700B07F67 /* SignUpViewController.m in Sources */,
 				620EA7BF22628849009E61C3 /* MessgingViewController.m in Sources */,
 				62277C4D225D823000B07F67 /* AssistantSeekerViewController.m in Sources */,

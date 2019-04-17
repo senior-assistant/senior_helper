@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		620EA7BF22628849009E61C3 /* MessgingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 620EA7BE22628849009E61C3 /* MessgingViewController.m */; };
 		62183485225D45DA0003B79C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 62183484225D45DA0003B79C /* AppDelegate.m */; };
 		6218348D225D45DD0003B79C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6218348C225D45DD0003B79C /* Assets.xcassets */; };
 		62183490225D45DD0003B79C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6218348E225D45DD0003B79C /* LaunchScreen.storyboard */; };
@@ -48,6 +49,8 @@
 		3C8DF64CCF1F098422599653 /* libPods-Senior AssistantTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Senior AssistantTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A849B2E17FD628E868161C4 /* libPods-Senior AssistantUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Senior AssistantUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5DBE17AE174D94182B9E0B15 /* Pods-Senior AssistantUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Senior AssistantUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Senior AssistantUITests/Pods-Senior AssistantUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		620EA7BD22628849009E61C3 /* MessgingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MessgingViewController.h; sourceTree = "<group>"; };
+		620EA7BE22628849009E61C3 /* MessgingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MessgingViewController.m; sourceTree = "<group>"; };
 		62183480225D45DA0003B79C /* Senior Assistant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Senior Assistant.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		62183483225D45DA0003B79C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		62183484225D45DA0003B79C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -172,6 +175,8 @@
 				62277C4F225D824700B07F67 /* AssistantProviderViewController.m */,
 				62277C51225D8AA600B07F67 /* AvailableAssistantsViewController.h */,
 				62277C52225D8AA600B07F67 /* AvailableAssistantsViewController.m */,
+				620EA7BD22628849009E61C3 /* MessgingViewController.h */,
+				620EA7BE22628849009E61C3 /* MessgingViewController.m */,
 			);
 			path = "SeniorAssistant ViewController";
 			sourceTree = "<group>";
@@ -362,15 +367,11 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
 				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-Senior AssistantUITests-checkManifestLockResult.txt",
 			);
@@ -384,15 +385,11 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Senior Assistant/Pods-Senior Assistant-resources.sh",
 				"${PODS_CONFIGURATION_BUILD_DIR}/Parse/Parse.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Parse.bundle",
 			);
@@ -406,15 +403,11 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
 				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-Senior AssistantTests-checkManifestLockResult.txt",
 			);
@@ -428,15 +421,11 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
 				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-Senior Assistant-checkManifestLockResult.txt",
 			);
@@ -455,6 +444,7 @@
 				62277C50225D824700B07F67 /* AssistantProviderViewController.m in Sources */,
 				62183493225D45DD0003B79C /* main.m in Sources */,
 				62277C57225D8B4700B07F67 /* SignUpViewController.m in Sources */,
+				620EA7BF22628849009E61C3 /* MessgingViewController.m in Sources */,
 				62277C4D225D823000B07F67 /* AssistantSeekerViewController.m in Sources */,
 				62277C53225D8AA600B07F67 /* AvailableAssistantsViewController.m in Sources */,
 				62183485225D45DA0003B79C /* AppDelegate.m in Sources */,

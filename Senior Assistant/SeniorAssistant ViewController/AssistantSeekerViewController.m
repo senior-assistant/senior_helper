@@ -7,6 +7,7 @@
 //
 
 #import "AssistantSeekerViewController.h"
+#import "RecentMessagesCell.h"
 
 @interface AssistantSeekerViewController ()<UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *recentMessages;
@@ -37,8 +38,11 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [[UITableViewCell alloc] init];
-    cell.textLabel.text = [NSString stringWithFormat:@"rows: %d, section %d", indexPath.row, indexPath.section];
+    RecentMessagesCell *cell = [tableView dequeueReusableCellWithIdentifier:@"RecentMessagesCell"];
+    
+    cell.nameLabel.text = @"S Hamza";
+    cell.messageLabel.text = @"Hey Zee. How you doing?";
+    
     return cell;
 }
 

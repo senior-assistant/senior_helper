@@ -7,8 +7,10 @@
 //
 
 #import "AvailableAssistantsViewController.h"
+#import "AvailableAssistantsCell.h"
 
-@interface AvailableAssistantsViewController ()
+@interface AvailableAssistantsViewController ()<UITableViewDataSource, UITableViewDelegate>
+@property (weak, nonatomic) IBOutlet UITableView *availableAssistants;
 
 @end
 
@@ -18,12 +20,28 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.availableAssistants.dataSource = self;
+    self.availableAssistants.delegate = self;
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 20;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    AvailableAssistantsCell *cell = [tableView dequeueReusableCellWithIdentifier:@"AvailableAssistantsCell"];
+    
+    cell.nameLabel.text = @"S Hamza";
+    
+    return cell;
 }
 
 /*

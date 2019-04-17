@@ -88,6 +88,9 @@
          }];
 }
 
+- (IBAction)onTap:(id)sender {
+    [self.view endEditing:YES];
+}
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {

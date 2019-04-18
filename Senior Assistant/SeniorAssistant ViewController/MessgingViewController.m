@@ -13,6 +13,8 @@
 @interface MessgingViewController () <UITableViewDataSource, UITableViewDelegate>
 @property(strong, nonatomic) NSMutableArray * messageArray;
 @property (weak, nonatomic) IBOutlet UITableView *messageTableView;
+-(PFObject*) createObject;
+-(void) updateMessage:(PFObject *) result;
 @end
 
 @implementation MessgingViewController
@@ -23,6 +25,24 @@
     self.messageTableView.dataSource = self;
     self.messageTableView.delegate = self;
     self.messageArray = [[NSMutableArray alloc] init];
+    
+    bool found = false;
+    PFUser *user = [PFUser currentUser];
+    PFRelation *relation = [user relationForKey:@"texts"];
+    NSArray *temp = [[relation query]findObjects];
+    PFObject * resultObejct;
+    
+    for (int i = 0; i < temp.count && !found; i++)
+    {
+        if ([temp[i][@"receiver"] isEqualToString:self.receiverUserName])
+        {
+            found = true;
+            resultObejct = temp[i];
+            self.messageArray = resultObejct[@"textMessages"];
+        }
+    }
+    
+    [self.messageTableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning
@@ -30,43 +50,102 @@
     [super didReceiveMemoryWarning];
 }
 
+-(PFObject*) createObject
+{
+    PFUser *user = [PFUser currentUser];
+    NSArray* textMessages =  @[] ;
+    PFObject *messages = [PFObject objectWithClassName:@"Messages"];
+    messages[@"sender"] = user.username;
+    messages[@"receiver"] = @"";
+    messages[@"textMessages"] = textMessages;
+    
+    return messages;
+}
+
+-(void) updateMessage:(PFObject *) result;
+{
+    PFUser *user = [PFUser currentUser];
+    PFQuery *query = [PFQuery queryWithClassName:@"Messages"];
+    [query getObjectInBackgroundWithId:result.objectId block:^(PFObject * message, NSError * error)
+    {
+         message[@"sender"] = user.username;
+         message[@"receiver"] = self.receiverUserName;
+         [self.messageArray addObject:self.messageTextField.text];
+         [message addObject:self.messageTextField.text forKey:@"textMessages"];
+         [message saveInBackground];
+         [self.messageTableView reloadData];
+     }];
+}
+
 - (IBAction)sendingMesage:(id)sender
 {
     PFUser *user = [PFUser currentUser];
     PFRelation *relation = [user relationForKey:@"texts"];
-
     [[relation query] findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error)
     {
-        PFObject *resultObejct = objects[0];
-        NSLog(@"%@", resultObejct.objectId);
-        PFQuery *query = [PFQuery queryWithClassName:@"Messages"];
-        
-        [query getObjectInBackgroundWithId:resultObejct.objectId block:^(PFObject * message, NSError * error)
+        PFObject *resultObejct;
+        BOOL found = false;
+
+        for (int i = 0; i < objects.count && !found; i++)
         {
-            message[@"sender"] = user.username;
-            message[@"receiver"] = @"zola";
-            [self.messageArray addObject:self.messageTextField.text];
-            NSArray *array = [[NSArray alloc] initWithArray:self.messageArray];
-            [message addObjectsFromArray:array forKey:@"textMessages"];
-            [message saveInBackground];
-            [self. messageTableView reloadData];
-        }];
-    }];
+            if ([objects[i][@"receiver"] isEqualToString:self.receiverUserName])
+            {
+                found = true;
+                resultObejct = objects[i];
+            }
+        }
+
+        if (found)
+        {
+            [self updateMessage:resultObejct];
+        }
+        else
+        {
+            PFObject * result = [self createObject];
+            [relation addObject:result];
+            [result save];
+            [user save];
+            [self updateMessage:result];
+        }
+     }];
 }
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath
 {
     mesageViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"messageCell" forIndexPath:indexPath];
-    NSString * temporary = self.messageArray[indexPath.row];
-    NSLog(@"%@", indexPath);
-    cell.messageTextView.text = temporary;
+    PFUser *user = [PFUser currentUser];
+    PFRelation *relation = [user relationForKey:@"texts"];
+    
+    [[relation query] findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error)
+    {
+         bool found = false;
+         PFObject *resultObejct;
+        
+         for (int i = 0; i < objects.count && !false; i++)
+         {
+            if ([objects[i][@"receiver"] isEqualToString:self.receiverUserName])
+            {
+                found = true;
+                resultObejct = objects[i];
+            }
+         }
+
+         if (found)
+         {
+             PFQuery *query = [PFQuery queryWithClassName:@"Messages"];
+             [query getObjectInBackgroundWithId:resultObejct.objectId block:^(PFObject * message, NSError * error)
+             {
+                  cell.messageTextView.text = message[@"textMessages"][indexPath.row];
+             }];
+         }
+     }];
 
     return cell;
 }
 
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.messageArray.count;
+      return self.messageArray.count;
 }
 
 /*

@@ -194,12 +194,12 @@
 			children = (
 				62277C4B225D823000B07F67 /* AssistantSeekerViewController.h */,
 				62277C4C225D823000B07F67 /* AssistantSeekerViewController.m */,
-				62277C4E225D824700B07F67 /* AssistantProviderViewController.h */,
-				62277C4F225D824700B07F67 /* AssistantProviderViewController.m */,
 				62277C51225D8AA600B07F67 /* AvailableAssistantsViewController.h */,
 				62277C52225D8AA600B07F67 /* AvailableAssistantsViewController.m */,
 				620EA7BD22628849009E61C3 /* MessgingViewController.h */,
 				620EA7BE22628849009E61C3 /* MessgingViewController.m */,
+				62277C4E225D824700B07F67 /* AssistantProviderViewController.h */,
+				62277C4F225D824700B07F67 /* AssistantProviderViewController.m */,
 			);
 			path = "SeniorAssistant ViewController";
 			sourceTree = "<group>";

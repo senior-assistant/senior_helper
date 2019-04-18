@@ -8,9 +8,12 @@
 
 #import "AvailableAssistantsViewController.h"
 #import "AvailableAssistantsCell.h"
+#import "MessgingViewController.h"
+#import "Parse/Parse.h"
 
 @interface AvailableAssistantsViewController ()<UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *availableAssistants;
+@property (strong, nonatomic) NSString * receiverString;
 
 @end
 
@@ -19,7 +22,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     self.availableAssistants.dataSource = self;
     self.availableAssistants.delegate = self;
 }
@@ -27,31 +29,45 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 20;
+    PFQuery *query = [PFUser query];
+    NSArray * results = [query findObjects];
+    
+    return results.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    AvailableAssistantsCell *cell = [tableView dequeueReusableCellWithIdentifier:@"AvailableAssistantsCell"];
-    
-    cell.nameLabel.text = @"S Hamza";
+    AvailableAssistantsCell *cell = [tableView dequeueReusableCellWithIdentifier:@"AvailableAssistantsCell" forIndexPath:indexPath];
+    PFQuery *query = [PFUser query];
+    [query whereKeyExists:@"username"];
+    NSArray * results = [query findObjects];
+    cell.nameLabel.text = results[indexPath.row][@"username"];
     
     return cell;
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    PFQuery *query = [PFUser query];
+    [query whereKeyExists:@"username"];
+    NSArray * results = [query findObjects];
+    self.receiverString = results[indexPath.row][@"username"];
+    [self performSegueWithIdentifier:@"showMessage" sender:nil];
 }
-*/
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if([segue.identifier isEqualToString:@"showMessage"])
+    {
+        UINavigationController * navigationController = [segue destinationViewController];;
+        MessgingViewController * messgingViewController = (MessgingViewController*) navigationController.topViewController;
+        messgingViewController.receiverUserName = self.receiverString;
+    }
+}
+
 
 @end

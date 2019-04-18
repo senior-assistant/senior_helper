@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="94v-rU-8g1">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ofV-sf-hRZ">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -22,6 +22,9 @@
                                 <rect key="frame" x="0.0" y="615" width="375" height="52"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Find Other Assistants"/>
+                                <connections>
+                                    <action selector="findOtherAssistant:" destination="MPw-ct-7xL" eventType="touchUpInside" id="zox-7s-Nqb"/>
+                                </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="55" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="I0j-QN-vdN">
                                 <rect key="frame" x="0.0" y="15" width="375" height="607"/>
@@ -65,6 +68,8 @@
                     <navigationItem key="navigationItem" title="Recent Messages" id="jD7-5z-zeJ"/>
                     <connections>
                         <outlet property="recentMessages" destination="I0j-QN-vdN" id="1jO-aU-ycw"/>
+                        <segue destination="94v-rU-8g1" kind="show" identifier="toMessageSegue" id="fa5-tG-LHb"/>
+                        <segue destination="37d-qJ-Dx1" kind="show" identifier="availableAssistant" id="cSX-Tl-HmK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e1h-Py-Sq8" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -74,13 +79,13 @@
         <!--Navigation Controller-->
         <scene sceneID="jcN-80-BGy">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XhV-0n-wJq" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="cmW-OO-rUG" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="S9L-en-MHg">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="XhV-0n-wJq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="118" y="985"/>
         </scene>
@@ -135,7 +140,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="114.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" text="ggg" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="StG-tP-AXL">
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="StG-tP-AXL">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="128"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -154,7 +159,14 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="txP-Kj-zvl"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Message" id="Kl6-jg-G32"/>
+                    <navigationItem key="navigationItem" title="Message" id="Kl6-jg-G32">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="Zcb-od-cv0"/>
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="dQU-SR-7J6">
+                            <connections>
+                                <segue destination="MPw-ct-7xL" kind="show" id="dm2-Qi-dAx"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="messageTableView" destination="V2K-Q4-lYl" id="J2V-Om-CFZ"/>
                         <outlet property="messageTextField" destination="Mfe-Q9-BUQ" id="ce9-vc-Bj4"/>
@@ -163,7 +175,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Who-Dt-Jye" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1012" y="984.55772113943033"/>
+            <point key="canvasLocation" x="1122" y="1023"/>
         </scene>
         <!--Available Assistants-->
         <scene sceneID="tGV-sp-6e1">
@@ -204,9 +216,17 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="jlX-xt-Dzt"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Available Assistants" id="T8R-FP-Fcf"/>
+                    <navigationItem key="navigationItem" title="Available Assistants" id="T8R-FP-Fcf">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="pgd-7G-1yb"/>
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="rRA-pT-xYi">
+                            <connections>
+                                <segue destination="MPw-ct-7xL" kind="show" id="Og3-yc-9GN"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="availableAssistants" destination="e9U-50-uQh" id="dfs-00-aRg"/>
+                        <segue destination="94v-rU-8g1" kind="show" identifier="showMessage" id="Ruv-t3-DJk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Nu-aa-eiJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -247,7 +267,11 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Dl-0K-Okd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1997.5999999999999" y="139.880059970015"/>
+            <point key="canvasLocation" x="1828" y="140"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="Ruv-t3-DJk"/>
+        <segue reference="dm2-Qi-dAx"/>
+    </inferredMetricsTieBreakers>
 </document>

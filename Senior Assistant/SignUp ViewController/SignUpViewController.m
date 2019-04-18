@@ -9,6 +9,7 @@
 #import "SignUpViewController.h"
 #import "Parse/Parse.h"
 #import "MessgingViewController.h"
+#import "AssistantSeekerViewController.h"
 
 @interface SignUpViewController ()
 @property(strong, nonatomic) SignUpViewController * signIn;
@@ -45,16 +46,8 @@
              else
              {
                  NSLog(@"User registered successfully");
-                 NSArray* textMessages = @[@""];
-                 PFObject *messages = [PFObject objectWithClassName:@"Messages"];
-                 messages[@"sender"] = self.userName.text;
-                 messages[@"receiver"] = @"";
-                 messages[@"textMessages"] = textMessages;
-    
                  PFUser *registerUser = [PFUser currentUser];
                  PFRelation *relation = [registerUser relationForKey:@"texts"];
-                 [relation addObject:messages];
-                 [messages save];
                  [registerUser save];
                  [self performSegueWithIdentifier:@"seekerSegue" sender:nil];
 //                 [messages saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error)
@@ -88,7 +81,8 @@
          }];
 }
 
-- (IBAction)onTap:(id)sender {
+- (IBAction)onTap:(id)sender
+{
     [self.view endEditing:YES];
 }
 
@@ -97,8 +91,8 @@
     if([segue.identifier isEqualToString:@"seekerSegue"])
     {
         UINavigationController *navigationController = [segue destinationViewController];;
-        MessgingViewController * messgingViewController = (MessgingViewController*) navigationController.topViewController;
-        messgingViewController.currentUserName = self.userName.text;
+        AssistantSeekerViewController * messgingViewController = (AssistantSeekerViewController*) navigationController.topViewController;
+        //messgingViewController.currentUserName = self.userName.text;
     }
 }
 

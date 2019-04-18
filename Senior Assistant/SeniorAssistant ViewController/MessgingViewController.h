@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface MessgingViewController : UIViewController
-@property (weak, nonatomic) IBOutlet UIButton *sendMessageButton;
-@property (weak, nonatomic) IBOutlet UITextView *messageTextField;
-@property(strong, nonatomic) NSString* currentUserName;
+@property (weak, nonatomic) IBOutlet UIButton* sendMessageButton;
+@property (weak, nonatomic) IBOutlet UITextView* messageTextField;
+@property(strong, nonatomic) NSString* receiverUserName;
 @end

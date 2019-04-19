@@ -36,14 +36,15 @@
     PFQuery *query = [PFUser query];
     NSArray * results = [query findObjects];
     
-    return results.count;
+    return results.count - 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     AvailableAssistantsCell *cell = [tableView dequeueReusableCellWithIdentifier:@"AvailableAssistantsCell" forIndexPath:indexPath];
     PFQuery *query = [PFUser query];
-    [query whereKeyExists:@"username"];
+    PFUser * user = [PFUser currentUser];
+    [query whereKey:@"username" notEqualTo:user.username];
     NSArray * results = [query findObjects];
     cell.nameLabel.text = results[indexPath.row][@"username"];
     
@@ -53,7 +54,8 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     PFQuery *query = [PFUser query];
-    [query whereKeyExists:@"username"];
+    PFUser * user = [PFUser currentUser];
+    [query whereKey:@"username" notEqualTo:user.username];
     NSArray * results = [query findObjects];
     self.receiverString = results[indexPath.row][@"username"];
     [self performSegueWithIdentifier:@"showMessage" sender:nil];

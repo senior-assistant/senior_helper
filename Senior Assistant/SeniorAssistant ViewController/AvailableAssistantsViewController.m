@@ -34,9 +34,10 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     PFQuery *query = [PFUser query];
+    [query whereKey:@"role" equalTo:@"AssistantProvider"];
     NSArray * results = [query findObjects];
     
-    return results.count - 1;
+    return results.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -44,7 +45,8 @@
     AvailableAssistantsCell *cell = [tableView dequeueReusableCellWithIdentifier:@"AvailableAssistantsCell" forIndexPath:indexPath];
     PFQuery *query = [PFUser query];
     PFUser * user = [PFUser currentUser];
-    [query whereKey:@"username" notEqualTo:user.username];
+    //[query whereKey:@"username" notEqualTo:user.username];
+     [query whereKey:@"role" equalTo:@"AssistantProvider"];
     NSArray * results = [query findObjects];
     cell.nameLabel.text = results[indexPath.row][@"username"];
     
@@ -55,7 +57,8 @@
 {
     PFQuery *query = [PFUser query];
     PFUser * user = [PFUser currentUser];
-    [query whereKey:@"username" notEqualTo:user.username];
+    //[query whereKey:@"username" notEqualTo:user.username];
+    [query whereKey:@"role" equalTo:@"AssistantProvider"];
     NSArray * results = [query findObjects];
     self.receiverString = results[indexPath.row][@"username"];
     [self performSegueWithIdentifier:@"showMessage" sender:nil];

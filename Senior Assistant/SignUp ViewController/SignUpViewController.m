@@ -10,9 +10,12 @@
 #import "Parse/Parse.h"
 #import "MessgingViewController.h"
 #import "AssistantSeekerViewController.h"
+#import "AssistantProviderViewController.h"
 
 @interface SignUpViewController ()
 @property(strong, nonatomic) SignUpViewController * signIn;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *roleSegment;
+
 @end
 
 @implementation SignUpViewController
@@ -36,6 +39,9 @@
         newUser.username = self.userName.text;
         newUser.email = self.emailField.text;
         newUser.password = self.passwordField.text;
+        NSArray * arrayForRole = @[@"AssistantSeeker", @"AssistantProvider"];
+        NSString * role = arrayForRole[self.roleSegment.selectedSegmentIndex];
+        newUser[@"role"] = role;
     
         [newUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError * error)
          {
@@ -49,7 +55,15 @@
                  PFUser *registerUser = [PFUser currentUser];
                  PFRelation *relation = [registerUser relationForKey:@"texts"];
                  [registerUser save];
-                 [self performSegueWithIdentifier:@"seekerSegue" sender:nil];
+                 
+                 if ([role isEqualToString:@"AssistantSeeker"])
+                 {
+                     [self performSegueWithIdentifier:@"seekerSegue" sender:nil];
+                 }
+                 else
+                 {
+                     [self performSegueWithIdentifier:@"providerSegue" sender:nil];
+                 }
 //                 [messages saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error)
 //                  {
 //                      if (succeeded)
@@ -92,6 +106,12 @@
     {
         UINavigationController *navigationController = [segue destinationViewController];;
         AssistantSeekerViewController * messgingViewController = (AssistantSeekerViewController*) navigationController.topViewController;
+        //messgingViewController.currentUserName = self.userName.text;
+    }
+    else
+    {
+        UINavigationController *navigationController = [segue destinationViewController];;
+        AssistantProviderViewController * messgingViewController = (AssistantProviderViewController*) navigationController.topViewController;
         //messgingViewController.currentUserName = self.userName.text;
     }
 }

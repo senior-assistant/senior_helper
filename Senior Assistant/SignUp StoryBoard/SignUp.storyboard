@@ -101,9 +101,11 @@
                     <connections>
                         <outlet property="emailField" destination="fhj-tI-611" id="qN0-Gh-6Ev"/>
                         <outlet property="passwordField" destination="m50-HU-2X3" id="2Lr-lO-sFe"/>
+                        <outlet property="roleSegment" destination="Xdq-8Y-hjs" id="n8r-Ff-iyu"/>
                         <outlet property="signUp" destination="4vj-ZR-EKo" id="czg-35-AkI"/>
                         <outlet property="userName" destination="C5u-P1-0Jg" id="HfM-Ii-SJY"/>
                         <segue destination="vvN-wD-Rzb" kind="show" identifier="seekerSegue" id="PNA-nU-wIN"/>
+                        <segue destination="HUo-Z4-BqX" kind="show" identifier="providerSegue" id="rEz-dG-Mdq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g69-8b-Zy5" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -122,6 +124,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kHJ-mp-h9h" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1033" y="51"/>
+        </scene>
+        <!--SeniorAssistantProvider-->
+        <scene sceneID="Jn2-Aa-eSR">
+            <objects>
+                <viewControllerPlaceholder storyboardName="SeniorAssistantProvider" id="HUo-Z4-BqX" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FU9-nr-WbJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1033" y="176"/>
         </scene>
     </scenes>
 </document>

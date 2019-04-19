@@ -15,6 +15,11 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *messageLabel;
 
+@property (weak, nonatomic) IBOutlet UILabel *nameLabelAP;
+@property (weak, nonatomic) IBOutlet UILabel *messageLabelAP;
+
+
+
 @end
 
 NS_ASSUME_NONNULL_END

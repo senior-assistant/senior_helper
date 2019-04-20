@@ -75,12 +75,20 @@
          [message saveInBackground];
          [self.messageTableView reloadData];
      }];
+    
+//    [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error)
+//    {
+//
+//    }];
+    
 }
 
 - (IBAction)sendingMesage:(id)sender
 {
     PFUser *user = [PFUser currentUser];
     PFRelation *relation = [user relationForKey:@"texts"];
+    PFQuery *query = [PFUser query];
+    
     [[relation query] findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error)
     {
         PFObject *resultObejct;
@@ -98,6 +106,10 @@
         if (found)
         {
             [self updateMessage:resultObejct];
+//            [query whereKey:@"username" equalTo:self.receiverUserName];
+//            NSArray *receiverArray = [query findObjects];
+//            PFObject * temp = receiverArray[0];
+//            PFRelation * relation2 = [temp relationForKey:@"texts"];
         }
         else
         {
@@ -106,6 +118,9 @@
             [result save];
             [user save];
             [self updateMessage:result];
+//            [query whereKey:@"username" equalTo:self.receiverUserName];
+//            NSArray *receiverArray = [query findObjects];
+//            receiverArray[0][@"texts"] = relation;
         }
      }];
 }

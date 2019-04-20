@@ -105,7 +105,7 @@
                         <outlet property="signUp" destination="4vj-ZR-EKo" id="czg-35-AkI"/>
                         <outlet property="userName" destination="C5u-P1-0Jg" id="HfM-Ii-SJY"/>
                         <segue destination="vvN-wD-Rzb" kind="show" identifier="seekerSegue" id="PNA-nU-wIN"/>
-                        <segue destination="HUo-Z4-BqX" kind="show" identifier="providerSegue" id="rEz-dG-Mdq"/>
+                        <segue destination="HUo-Z4-BqX" kind="show" identifier="providerSegue" id="TFn-yB-fzr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g69-8b-Zy5" userLabel="First Responder" sceneMemberID="firstResponder"/>

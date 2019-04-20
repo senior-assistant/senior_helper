@@ -86,7 +86,7 @@
               cell.nameLabel.text = message[@"receiver"];
               NSArray * tempValue = message[@"textMessages"];
               cell.messageLabel.text= message[@"textMessages"][tempValue.count - 1];
-          }];
+         }];
      }];
     return cell;
 }

@@ -56,14 +56,14 @@
                  PFRelation *relation = [registerUser relationForKey:@"texts"];
                  [registerUser save];
                  
-                 //if ([role isEqualToString:@"AssistantSeeker"])
-                 //{
+                 if ([role isEqualToString:@"AssistantSeeker"])
+                 {
                      [self performSegueWithIdentifier:@"seekerSegue" sender:nil];
-                 //}
-//                 else
-//                 {
-//                     [self performSegueWithIdentifier:@"providerSegue" sender:nil];
-//                 }
+                 }
+                 else
+                 {
+                     [self performSegueWithIdentifier:@"providerSegue" sender:nil];
+                 }
 //                 [messages saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error)
 //                  {
 //                      if (succeeded)
@@ -111,7 +111,7 @@
     else
     {
         UINavigationController *navigationController = [segue destinationViewController];;
-        AssistantProviderViewController * messgingViewController = (AssistantProviderViewController*) navigationController.topViewController;
+        AssistantProviderViewController * providerViewController = (AssistantProviderViewController*) navigationController.topViewController;
         //messgingViewController.currentUserName = self.userName.text;
     }
 }

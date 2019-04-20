@@ -9,6 +9,7 @@
 #import "MessgingViewController.h"
 #import "Parse/Parse.h"
 #import "mesageViewCell.h"
+#import "AssistantProviderViewController.h"
 
 @interface MessgingViewController () <UITableViewDataSource, UITableViewDelegate>
 @property(strong, nonatomic) NSMutableArray * messageArray;
@@ -74,13 +75,14 @@
          [message addObject:self.messageTextField.text forKey:@"textMessages"];
          [message saveInBackground];
          [self.messageTableView reloadData];
+        AssistantProviderViewController * assistantProvider = [[AssistantProviderViewController alloc] init];
+        [assistantProvider.recentMessages reloadData];
      }];
     
 //    [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error)
 //    {
 //
 //    }];
-    
 }
 
 - (IBAction)sendingMesage:(id)sender

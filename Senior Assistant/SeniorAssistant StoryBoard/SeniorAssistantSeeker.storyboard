@@ -79,13 +79,13 @@
         <!--Navigation Controller-->
         <scene sceneID="jcN-80-BGy">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="XhV-0n-wJq" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="cmW-OO-rUG" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="S9L-en-MHg">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XhV-0n-wJq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="118" y="985"/>
         </scene>
@@ -271,7 +271,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Ruv-t3-DJk"/>
-        <segue reference="dm2-Qi-dAx"/>
+        <segue reference="fa5-tG-LHb"/>
+        <segue reference="JjN-Oa-Ise"/>
     </inferredMetricsTieBreakers>
 </document>

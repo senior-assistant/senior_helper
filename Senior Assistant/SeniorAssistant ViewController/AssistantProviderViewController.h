@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface AssistantProviderViewController : UIViewController
-
+@property (strong, nonatomic) IBOutlet UITableView *recentMessages;
 @end

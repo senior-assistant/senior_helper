@@ -24,6 +24,8 @@
 		62277C50225D824700B07F67 /* AssistantProviderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 62277C4F225D824700B07F67 /* AssistantProviderViewController.m */; };
 		62277C53225D8AA600B07F67 /* AvailableAssistantsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 62277C52225D8AA600B07F67 /* AvailableAssistantsViewController.m */; };
 		62277C57225D8B4700B07F67 /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 62277C56225D8B4700B07F67 /* SignUpViewController.m */; };
+		624AFDB8226D355F007C9D89 /* ProviderMessageViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 624AFDB7226D355F007C9D89 /* ProviderMessageViewCell.m */; };
+		624AFDBB226D35C4007C9D89 /* ProviderMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 624AFDBA226D35C4007C9D89 /* ProviderMessageViewController.m */; };
 		BA3BE48183853B952ABE8647 /* libPods-Senior Assistant.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C8D6F7653A60342ED2B65B5 /* libPods-Senior Assistant.a */; };
 		F1A7AEB024F1D26EAC603437 /* libPods-Senior AssistantUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A849B2E17FD628E868161C4 /* libPods-Senior AssistantUITests.a */; };
 		FFC99B6917B4277FDBD74AA1 /* libPods-Senior AssistantTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C8DF64CCF1F098422599653 /* libPods-Senior AssistantTests.a */; };
@@ -84,6 +86,10 @@
 		62277C52225D8AA600B07F67 /* AvailableAssistantsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AvailableAssistantsViewController.m; sourceTree = "<group>"; };
 		62277C55225D8B4700B07F67 /* SignUpViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SignUpViewController.h; sourceTree = "<group>"; };
 		62277C56225D8B4700B07F67 /* SignUpViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
+		624AFDB6226D355F007C9D89 /* ProviderMessageViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProviderMessageViewCell.h; sourceTree = "<group>"; };
+		624AFDB7226D355F007C9D89 /* ProviderMessageViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProviderMessageViewCell.m; sourceTree = "<group>"; };
+		624AFDB9226D35C4007C9D89 /* ProviderMessageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProviderMessageViewController.h; sourceTree = "<group>"; };
+		624AFDBA226D35C4007C9D89 /* ProviderMessageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProviderMessageViewController.m; sourceTree = "<group>"; };
 		67DE7FD596DA6F3A1075FBC3 /* Pods-Senior Assistant.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Senior Assistant.release.xcconfig"; path = "Pods/Target Support Files/Pods-Senior Assistant/Pods-Senior Assistant.release.xcconfig"; sourceTree = "<group>"; };
 		683FDBF19D2484309C008055 /* Pods-Senior AssistantTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Senior AssistantTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Senior AssistantTests/Pods-Senior AssistantTests.release.xcconfig"; sourceTree = "<group>"; };
 		E3A13B4750AE2CA5DFBFF0EA /* Pods-Senior Assistant.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Senior Assistant.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Senior Assistant/Pods-Senior Assistant.debug.xcconfig"; sourceTree = "<group>"; };
@@ -122,6 +128,8 @@
 			isa = PBXGroup;
 			children = (
 				378B5AB82262CD1500CD77C9 /* RecentMessagesCell.h */,
+				624AFDB6226D355F007C9D89 /* ProviderMessageViewCell.h */,
+				624AFDB7226D355F007C9D89 /* ProviderMessageViewCell.m */,
 				378B5AB92262CD1500CD77C9 /* RecentMessagesCell.m */,
 				378B5ABB2262F5CB00CD77C9 /* AvailableAssistantsCell.h */,
 				378B5ABC2262F5CB00CD77C9 /* AvailableAssistantsCell.m */,
@@ -200,6 +208,8 @@
 				620EA7BE22628849009E61C3 /* MessgingViewController.m */,
 				62277C4E225D824700B07F67 /* AssistantProviderViewController.h */,
 				62277C4F225D824700B07F67 /* AssistantProviderViewController.m */,
+				624AFDB9226D35C4007C9D89 /* ProviderMessageViewController.h */,
+				624AFDBA226D35C4007C9D89 /* ProviderMessageViewController.m */,
 			);
 			path = "SeniorAssistant ViewController";
 			sourceTree = "<group>";
@@ -464,6 +474,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				624AFDB8226D355F007C9D89 /* ProviderMessageViewCell.m in Sources */,
 				378B5ABA2262CD1500CD77C9 /* RecentMessagesCell.m in Sources */,
 				62277C50225D824700B07F67 /* AssistantProviderViewController.m in Sources */,
 				378B5ABD2262F5CB00CD77C9 /* AvailableAssistantsCell.m in Sources */,
@@ -472,6 +483,7 @@
 				62277C57225D8B4700B07F67 /* SignUpViewController.m in Sources */,
 				620EA7BF22628849009E61C3 /* MessgingViewController.m in Sources */,
 				62277C4D225D823000B07F67 /* AssistantSeekerViewController.m in Sources */,
+				624AFDBB226D35C4007C9D89 /* ProviderMessageViewController.m in Sources */,
 				62277C53225D8AA600B07F67 /* AvailableAssistantsViewController.m in Sources */,
 				62183485225D45DA0003B79C /* AppDelegate.m in Sources */,
 			);

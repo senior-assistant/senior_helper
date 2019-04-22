@@ -7,11 +7,12 @@
 //
 
 #import "AssistantProviderViewController.h"
+#import "ProviderMessageViewController.h"
 #import "RecentMessagesCell.h"
 #import "Parse/Parse.h"
 
 @interface AssistantProviderViewController () <UITableViewDataSource, UITableViewDelegate>
-
+@property (strong, nonatomic) NSString * senderName;
 @end
 
 @implementation AssistantProviderViewController
@@ -19,8 +20,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    
     self.recentMessages.dataSource = self;
     self.recentMessages.delegate = self;
     [self.recentMessages reloadData];
@@ -29,7 +28,6 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -60,14 +58,25 @@
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    PFUser *user = [PFUser currentUser];
+    PFQuery *query = [PFQuery queryWithClassName:@"Messages"];
+    [query whereKey:@"receiver" equalTo:user.username];
+    NSArray * arrayOfSenders = [query findObjects];
+    self.senderName = arrayOfSenders[indexPath.row][@"sender"];
+    [self performSegueWithIdentifier:@"providerMessageSegue" sender:nil];
+}
 
-/*
- #pragma mark - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
- }
- */
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if([segue.identifier isEqualToString:@"providerMessageSegue"])
+    {
+        UINavigationController * navigationController = [segue destinationViewController];;
+        ProviderMessageViewController * providerViewController = (ProviderMessageViewController
+                                                                  *) navigationController.topViewController;
+        providerViewController.messageSenderName = self.senderName;
+    }
+}
+
 @end

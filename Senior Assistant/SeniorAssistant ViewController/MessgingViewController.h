@@ -12,4 +12,5 @@
 @property (weak, nonatomic) IBOutlet UIButton* sendMessageButton;
 @property (weak, nonatomic) IBOutlet UITextView* messageTextField;
 @property(strong, nonatomic) NSString* receiverUserName;
+@property (weak, nonatomic) IBOutlet UITableView *messageTableView;
 @end

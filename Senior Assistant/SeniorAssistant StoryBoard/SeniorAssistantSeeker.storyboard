@@ -67,7 +67,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Recent Messages" id="jD7-5z-zeJ"/>
                     <connections>
-                        <outlet property="recentMessages" destination="I0j-QN-vdN" id="1jO-aU-ycw"/>
+                        <outlet property="recentMessages" destination="I0j-QN-vdN" id="MJt-OZ-DhP"/>
                         <segue destination="94v-rU-8g1" kind="show" identifier="toMessageSegue" id="fa5-tG-LHb"/>
                         <segue destination="37d-qJ-Dx1" kind="show" identifier="availableAssistant" id="cSX-Tl-HmK"/>
                     </connections>
@@ -168,7 +168,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="messageTableView" destination="V2K-Q4-lYl" id="J2V-Om-CFZ"/>
+                        <outlet property="messageTableView" destination="V2K-Q4-lYl" id="mLn-7t-zXM"/>
                         <outlet property="messageTextField" destination="Mfe-Q9-BUQ" id="ce9-vc-Bj4"/>
                         <outlet property="sendMessageButton" destination="XPE-KF-HBJ" id="4bW-tm-L2f"/>
                     </connections>
@@ -272,6 +272,6 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="fa5-tG-LHb"/>
-        <segue reference="JjN-Oa-Ise"/>
+        <segue reference="dm2-Qi-dAx"/>
     </inferredMetricsTieBreakers>
 </document>

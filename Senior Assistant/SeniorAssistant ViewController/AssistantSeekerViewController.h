@@ -11,5 +11,6 @@
 @interface AssistantSeekerViewController : UIViewController
 
 //@property(strong, nonatomic) NSString* currentUserName;
+@property (weak, nonatomic) IBOutlet UITableView *recentMessages;
 
 @end

@@ -13,7 +13,6 @@
 #import "Parse/Parse.h"
 
 @interface AssistantSeekerViewController ()<UITableViewDataSource, UITableViewDelegate>
-@property (weak, nonatomic) IBOutlet UITableView* recentMessages;
 @property (strong, nonatomic) NSString* receiverName;
 @property (nonatomic, assign) NSInteger numberOfRows;
 @end

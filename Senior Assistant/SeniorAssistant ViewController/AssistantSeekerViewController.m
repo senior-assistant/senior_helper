@@ -15,6 +15,8 @@
 @interface AssistantSeekerViewController ()<UITableViewDataSource, UITableViewDelegate>
 @property (strong, nonatomic) NSString* receiverName;
 @property (nonatomic, assign) NSInteger numberOfRows;
+-(void) dataFetcher;
+@property (nonatomic, strong) UIRefreshControl *refreshControl;
 @end
 
 @implementation AssistantSeekerViewController
@@ -26,21 +28,30 @@
     
     self.recentMessages.dataSource = self;
     self.recentMessages.delegate = self;
-    PFUser *user = [PFUser currentUser];
-    PFRelation *relation = [user relationForKey:@"texts"];
+    [self dataFetcher];
     
-    [[relation query] findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error)
-    {
-         self.numberOfRows = objects.count;
-         [self.recentMessages reloadData];
-    }];
-    
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self action:@selector(dataFetcher) forControlEvents:UIControlEventValueChanged];
+    [self.recentMessages addSubview:self.refreshControl];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void) dataFetcher
+{
+    PFUser *user = [PFUser currentUser];
+    PFRelation *relation = [user relationForKey:@"texts"];
+
+    [[relation query] findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error)
+    {
+         self.numberOfRows = objects.count;
+         [self.recentMessages reloadData];
+         [self.refreshControl endRefreshing];
+    }];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section

@@ -46,7 +46,7 @@
     PFQuery *query = [PFUser query];
     PFUser * user = [PFUser currentUser];
     //[query whereKey:@"username" notEqualTo:user.username];
-     [query whereKey:@"role" equalTo:@"AssistantProvider"];
+    [query whereKey:@"role" equalTo:@"AssistantProvider"];
     NSArray * results = [query findObjects];
     cell.nameLabel.text = results[indexPath.row][@"username"];
     

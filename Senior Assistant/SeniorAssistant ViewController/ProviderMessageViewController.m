@@ -14,7 +14,9 @@
 
 @interface ProviderMessageViewController ()<UITableViewDataSource, UITableViewDelegate>
 @property (strong, nonatomic) NSArray * providerMessageCount;
+@property (nonatomic, strong) UIRefreshControl *refreshControl;
 -(void) updateMessageForProvider:(PFObject *) result;
+-(void) dataFetcher;
 @end
 
 @implementation ProviderMessageViewController
@@ -22,12 +24,45 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self.providerMessageTableView reloadData];
+    self.providerMessageCount = [[NSArray alloc] init];
+    
+    [self dataFetcher];
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self action:@selector(dataFetcher) forControlEvents:UIControlEventValueChanged];
+    [self.providerMessageTableView addSubview:self.refreshControl];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
+}
+
+-(void) dataFetcher
+{
+    PFUser * user = [PFUser currentUser];
+    PFQuery *query = [PFQuery queryWithClassName:@"Messages"];
+    [query whereKey:@"sender" equalTo:self.messageSenderName];
+    
+    NSArray * tempArray = [query findObjects];
+    
+    PFObject * object;
+    BOOL found = false;
+    
+    for (int i = 0; i < tempArray.count && !found; i++)
+    {
+        if (tempArray[i][@"sender"] == self.messageSenderName && tempArray[i][@"receiver"] == user.username)
+        {
+            found = true;
+            object = tempArray[i];
+        }
+    }
+    
+    if (found)
+    {
+        self.providerMessageCount = object[@"textMessages"];
+    }
+    [self.providerMessageTableView reloadData];
+    [self.refreshControl endRefreshing];
 }
 
 -(void) updateMessageForProvider:(PFObject *) result;
@@ -113,29 +148,6 @@
 
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    PFUser * user = [PFUser currentUser];
-    PFQuery *query = [PFQuery queryWithClassName:@"Messages"];
-    [query whereKey:@"sender" equalTo:self.messageSenderName];
-
-    NSArray * tempArray = [query findObjects];
-
-    PFObject * object;
-    BOOL found = false;
-
-    for (int i = 0; i < tempArray.count && !found; i++)
-    {
-         if (tempArray[i][@"sender"] == self.messageSenderName && tempArray[i][@"receiver"] == user.username)
-         {
-             found = true;
-             object = tempArray[i];
-         }
-    }
-
-    if (found)
-    {
-        self.providerMessageCount = object[@"textMessages"];
-    }
-
     return self.providerMessageCount.count;
 }
 

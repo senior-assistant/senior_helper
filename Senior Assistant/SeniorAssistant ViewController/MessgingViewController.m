@@ -13,9 +13,11 @@
 #import "ProviderMessageViewController.h"
 
 @interface MessgingViewController () <UITableViewDataSource, UITableViewDelegate>
-@property(strong, nonatomic) NSMutableArray * messageArray;
+@property (strong, nonatomic) NSMutableArray * messageArray;
+@property (nonatomic, strong) UIRefreshControl *refreshControl;
 -(PFObject*) createObject;
 -(void) updateMessage:(PFObject *) result;
+-(void) dataFetcher;
 @end
 
 @implementation MessgingViewController
@@ -26,7 +28,20 @@
     self.messageTableView.dataSource = self;
     self.messageTableView.delegate = self;
     self.messageArray = [[NSMutableArray alloc] init];
+    [self dataFetcher];
     
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self action:@selector(dataFetcher) forControlEvents:UIControlEventValueChanged];
+    [self.messageTableView addSubview:self.refreshControl];
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+}
+
+-(void) dataFetcher
+{
     bool found = false;
     PFUser *user = [PFUser currentUser];
     PFRelation *relation = [user relationForKey:@"texts"];
@@ -44,11 +59,7 @@
     }
     
     [self.messageTableView reloadData];
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
+    [self.refreshControl endRefreshing];
 }
 
 -(PFObject*) createObject
@@ -76,11 +87,6 @@
          [message saveInBackground];
          [self.messageTableView reloadData];
         
-         AssistantProviderViewController * assistantProvider = [[AssistantProviderViewController alloc] init];
-         [assistantProvider.recentMessages reloadData];
-        
-         ProviderMessageViewController * providerMessage = [[ProviderMessageViewController alloc] init];
-         [providerMessage.providerMessageTableView reloadData];
      }];
 //    [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error)
 //    {

@@ -13,6 +13,9 @@
 
 @interface AssistantProviderViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (strong, nonatomic) NSString * senderName;
+@property (nonatomic, strong) UIRefreshControl *refreshControl;
+@property (strong, nonatomic) NSArray * temp;
+-(void) dataFetcher;
 @end
 
 @implementation AssistantProviderViewController
@@ -22,7 +25,13 @@
     [super viewDidLoad];
     self.recentMessages.dataSource = self;
     self.recentMessages.delegate = self;
-    [self.recentMessages reloadData];
+    self.temp = [[NSArray alloc] init];
+    
+    [self dataFetcher];
+    
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self action:@selector(dataFetcher) forControlEvents:UIControlEventValueChanged];
+    [self.recentMessages addSubview:self.refreshControl];
 }
 
 - (void)didReceiveMemoryWarning
@@ -30,14 +39,19 @@
     [super didReceiveMemoryWarning];
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+-(void) dataFetcher
 {
     PFUser *user = [PFUser currentUser];
     PFQuery *query = [PFQuery queryWithClassName:@"Messages"];
     [query whereKey:@"receiver" equalTo:user.username];
-    NSArray * temp = [query findObjects];
-    
-    return temp.count;
+    self.temp = [query findObjects];
+    [self.recentMessages reloadData];
+    [self.refreshControl endRefreshing];
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return self.temp.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

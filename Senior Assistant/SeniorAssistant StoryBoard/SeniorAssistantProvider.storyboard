@@ -110,7 +110,7 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mKJ-rf-IY6">
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Type Here...." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mKJ-rf-IY6">
                                 <rect key="frame" x="0.0" y="637" width="327" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
@@ -122,14 +122,20 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Send"/>
                                 <connections>
-                                    <action selector="seningProviderMessage:" destination="2mg-7G-Mps" eventType="touchUpInside" id="yg8-wQ-6rJ"/>
+                                    <action selector="sendingProviderMessage:" destination="2mg-7G-Mps" eventType="touchUpInside" id="ZOd-8p-3gy"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="c0E-Bf-pEK"/>
                     </view>
-                    <navigationItem key="navigationItem" id="5U2-1d-irj"/>
+                    <navigationItem key="navigationItem" id="5U2-1d-irj">
+                        <barButtonItem key="leftBarButtonItem" title="Done" id="vTN-3z-mC7">
+                            <connections>
+                                <segue destination="vhH-oG-2d5" kind="show" id="f2o-zf-InD"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="providerMessageTableView" destination="x5x-lJ-1CN" id="KE2-gA-TTs"/>
                         <outlet property="providerSend" destination="xvc-Hg-tXQ" id="tDu-wI-8ti"/>

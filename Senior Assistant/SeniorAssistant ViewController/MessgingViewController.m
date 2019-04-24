@@ -11,6 +11,8 @@
 #import "mesageViewCell.h"
 #import "AssistantProviderViewController.h"
 #import "ProviderMessageViewController.h"
+#import "AssistantSeekerViewController.h"
+#import "AvailableAssistantsViewController.h"
 
 @interface MessgingViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (strong, nonatomic) NSMutableArray * messageArray;
@@ -42,6 +44,9 @@
 
 -(void) dataFetcher
 {
+    NSString* preFixText = @"To ";
+    NSString * combined = [preFixText stringByAppendingString:self.receiverUserName];
+    self.receiverUserLabelName.text = combined;
     bool found = false;
     PFUser *user = [PFUser currentUser];
     PFRelation *relation = [user relationForKey:@"texts"];
@@ -134,6 +139,16 @@
 //            receiverArray[0][@"texts"] = relation;
         }
      }];
+}
+
+- (IBAction)doneWithMessage:(id)sender
+{
+    //[[self presentingViewController] dismissViewControllerAnimated:NO completion:nil];
+    //[self.navigationController popViewControllerAnimated:YES];
+    UINavigationController * navigationController;
+    AvailableAssistantsViewController * availbleAssistantView = [[AvailableAssistantsViewController alloc] init];
+    availbleAssistantView = (AvailableAssistantsViewController*) navigationController.topViewController;
+    [self showViewController:availbleAssistantView sender:self];
 }
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath

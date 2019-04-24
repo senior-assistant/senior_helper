@@ -24,8 +24,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.providerMessageCount = [[NSArray alloc] init];
+    self.providerMessageTableView.dataSource = self;
+    self.providerMessageTableView.delegate = self;
     
+    self.providerMessageCount = [[NSArray alloc] init];
     [self dataFetcher];
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self action:@selector(dataFetcher) forControlEvents:UIControlEventValueChanged];
@@ -73,13 +75,8 @@
 //     {
          [result addObject:self.providerTextField.text forKey:@"textMessages"];
          [result saveInBackground];
+         self.providerMessageCount = result[@"textMessages"];
          [self.providerMessageTableView reloadData];
-    
-         AssistantSeekerViewController * assistantSeekersView = [[AssistantSeekerViewController alloc] init];
-         [assistantSeekersView.recentMessages reloadData];
-    
-         MessgingViewController * messageView = [[MessgingViewController alloc] init];
-         [messageView.messageTableView reloadData];
      //}];
     
     //    [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error)
@@ -88,7 +85,7 @@
     //    }];
 }
 
-- (IBAction)seningProviderMessage:(id)sender
+- (IBAction)sendingProviderMessage:(id)sender
 {
     PFUser * user = [PFUser currentUser];
     PFQuery *query = [PFQuery queryWithClassName:@"Messages"];

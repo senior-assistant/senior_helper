@@ -13,4 +13,5 @@
 @property (weak, nonatomic) IBOutlet UITextView* messageTextField;
 @property(strong, nonatomic) NSString* receiverUserName;
 @property (weak, nonatomic) IBOutlet UITableView *messageTableView;
+@property (weak, nonatomic) IBOutlet UILabel *receiverUserLabelName;
 @end

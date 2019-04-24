@@ -14,7 +14,7 @@
 @interface AvailableAssistantsViewController ()<UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *availableAssistants;
 @property (strong, nonatomic) NSString * receiverString;
-
+@property (strong, nonatomic) UIViewController * selfViewController;
 @end
 
 @implementation AvailableAssistantsViewController
@@ -29,6 +29,11 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
+}
+
+- (IBAction)didTapBack:(id)sender
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section

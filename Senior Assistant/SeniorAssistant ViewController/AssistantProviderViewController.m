@@ -10,6 +10,8 @@
 #import "ProviderMessageViewController.h"
 #import "RecentMessagesCell.h"
 #import "Parse/Parse.h"
+#import "AppDelegate.h"
+#import "loginViewController.h"
 
 @interface AssistantProviderViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (strong, nonatomic) NSString * senderName;
@@ -67,7 +69,10 @@
         PFObject * tempObject =  objects[indexPath.row];
         cell.nameLabelAP.text = tempObject[@"sender"];
         NSArray * arrayForTextMessages = tempObject[@"textMessages"];
-        cell.messageLabelAP.text = tempObject[@"textMessages"][arrayForTextMessages.count - 1];
+        
+        NSString * temp = tempObject[@"textMessages"][arrayForTextMessages.count - 1];
+        temp = [temp substringToIndex:temp.length - 1];
+        cell.messageLabelAP.text = temp;
     }];
     return cell;
 }
@@ -81,6 +86,18 @@
     self.senderName = arrayOfSenders[indexPath.row][@"sender"];
     [self performSegueWithIdentifier:@"providerMessageSegue" sender:nil];
 }
+
+- (IBAction)didTapLogout:(id)sender
+{
+    [PFUser logOutInBackgroundWithBlock:^(NSError * _Nullable error)
+    {
+        AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"SignUp" bundle:nil];
+        loginViewController *loginViewController = [storyboard instantiateViewControllerWithIdentifier:@"loginViewController"];
+        appDelegate.window.rootViewController = loginViewController;
+    }];
+}
+
 
  - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {

@@ -73,6 +73,8 @@
 //    PFQuery *query = [PFQuery queryWithClassName:@"Messages"];
 //    [query getObjectInBackgroundWithId:result.objectId block:^(PFObject * message, NSError * error)
 //     {
+         NSString * postIdentfier = @"0";
+         self.providerTextField.text = [self.providerTextField.text stringByAppendingString:postIdentfier];
          [result addObject:self.providerTextField.text forKey:@"textMessages"];
          [result saveInBackground];
          self.providerMessageCount = result[@"textMessages"];
@@ -136,7 +138,22 @@
         
         if (found)
         {
-            providercell.providerMessageTextView.text = object[@"textMessages"][indexPath.row];
+            NSString * temp = object[@"textMessages"][indexPath.row];
+            NSString * singleChar = [NSString stringWithFormat:@"%c", [temp characterAtIndex:temp.length - 1]];
+            
+            if ([singleChar isEqual:@"0"])
+            {
+                temp = [temp substringToIndex:temp.length - 1];
+                providercell.providerMessageTextView.textAlignment = NSTextAlignmentLeft;
+                providercell.providerMessageTextView.text = temp;
+            }
+            else
+            {
+                temp = [temp substringToIndex:temp.length - 1];
+                providercell.providerMessageTextView.textAlignment = NSTextAlignmentRight;
+                providercell.providerMessageTextView.text = temp;
+            }
+            
         }
     }];
 

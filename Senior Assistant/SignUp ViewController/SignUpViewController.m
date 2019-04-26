@@ -47,6 +47,19 @@
          {
              if (error != nil)
              {
+                 UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Error signing up!" message:((void)(@"%@"),error.localizedDescription) preferredStyle:(UIAlertControllerStyleAlert)];
+                 UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK"
+                                                                    style:UIAlertActionStyleDefault
+                                                                  handler:^(UIAlertAction * _Nonnull action)
+                 {
+                     
+                 }];
+                 [alert addAction:okAction];
+                 
+                 [self presentViewController:alert animated:YES completion:^
+                 {
+                     
+                 }];
                  NSLog(@"Error: %@", error.localizedDescription);
              }
              else

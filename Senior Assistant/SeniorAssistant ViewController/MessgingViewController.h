@@ -10,7 +10,7 @@
 
 @interface MessgingViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UIButton* sendMessageButton;
-@property (weak, nonatomic) IBOutlet UITextView* messageTextField;
+@property (weak, nonatomic) IBOutlet UITextField *messageTextField;
 @property(strong, nonatomic) NSString* receiverUserName;
 @property (weak, nonatomic) IBOutlet UITableView *messageTableView;
 @property (weak, nonatomic) IBOutlet UILabel *receiverUserLabelName;

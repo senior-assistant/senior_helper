@@ -88,10 +88,11 @@
          message[@"sender"] = user.username;
          message[@"receiver"] = self.receiverUserName;
          [self.messageArray addObject:self.messageTextField.text];
+         NSString * postIdentfier = @"1";
+         self.messageTextField.text = [self.messageTextField.text stringByAppendingString:postIdentfier];
          [message addObject:self.messageTextField.text forKey:@"textMessages"];
          [message saveInBackground];
          [self.messageTableView reloadData];
-        
      }];
 //    [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error)
 //    {
@@ -176,7 +177,21 @@
              PFQuery *query = [PFQuery queryWithClassName:@"Messages"];
              [query getObjectInBackgroundWithId:resultObejct.objectId block:^(PFObject * message, NSError * error)
              {
-                  cell.messageTextView.text = message[@"textMessages"][indexPath.row];
+                 NSString * temp = message[@"textMessages"][indexPath.row];
+                 NSString * singleChar = [NSString stringWithFormat:@"%c", [temp characterAtIndex:temp.length - 1]];
+                 
+                 if ([singleChar  isEqual: @"1"])
+                 {
+                     temp = [temp substringToIndex:temp.length - 1];
+                     cell.messageTextView.textAlignment = NSTextAlignmentLeft;
+                     cell.messageTextView.text = temp;
+                 }
+                 else
+                 {
+                     temp = [temp substringToIndex:temp.length - 1];
+                     cell.messageTextView.textAlignment = NSTextAlignmentRight;
+                     cell.messageTextView.text = temp;
+                 }
              }];
          }
      }];

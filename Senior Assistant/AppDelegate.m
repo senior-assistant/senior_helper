@@ -25,6 +25,19 @@
         configuration.server = @"http://senior-assister.herokuapp.com/parse";
     }];
     [Parse initializeWithConfiguration:config];
+    
+    PFUser * user = [PFUser currentUser];
+    
+    if (user && [user[@"role"] isEqualToString:@"AssistantSeeker"])
+    {
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"SeniorAssistantSeeker" bundle:nil];
+        self.window.rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"navaigationController"];
+    }
+    else if (user && [user[@"role"] isEqualToString:@"AssistantProvider"])
+    {
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"SeniorAssistantProvider" bundle:nil];
+        self.window.rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"providerNavigationController"];
+    }
     return YES;
 }
 

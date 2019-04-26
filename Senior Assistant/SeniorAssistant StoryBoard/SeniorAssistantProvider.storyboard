@@ -13,7 +13,7 @@
         <!--Navigation Controller-->
         <scene sceneID="Tm8-Pg-IP9">
             <objects>
-                <navigationController id="vhH-oG-2d5" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="providerNavigationController" id="vhH-oG-2d5" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="QQy-Dr-5Xr">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -65,7 +65,13 @@
                             </tableViewCell>
                         </prototypes>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Recent Messages" id="PCj-Hc-Owf"/>
+                    <navigationItem key="navigationItem" title="Recent Messages" id="PCj-Hc-Owf">
+                        <barButtonItem key="rightBarButtonItem" title="Logout" id="bWi-cT-nuq">
+                            <connections>
+                                <action selector="didTapLogout:" destination="EIH-YJ-h2W" id="hMX-dg-T9o"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="recentMessages" destination="9aA-r9-X2M" id="rfy-cC-kRO"/>
                         <segue destination="qST-rT-8Mc" kind="show" identifier="providerMessageSegue" id="gzn-In-KvI"/>

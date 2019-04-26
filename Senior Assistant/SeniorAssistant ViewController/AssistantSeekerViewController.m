@@ -11,6 +11,8 @@
 #import "MessgingViewController.h"
 #import "AvailableAssistantsViewController.h"
 #import "Parse/Parse.h"
+#import "AppDelegate.h"
+#import "loginViewController.h"
 
 @interface AssistantSeekerViewController ()<UITableViewDataSource, UITableViewDelegate>
 @property (strong, nonatomic) NSString* receiverName;
@@ -95,7 +97,10 @@
          {
               cell.nameLabel.text = message[@"receiver"];
               NSArray * tempValue = message[@"textMessages"];
-              cell.messageLabel.text= message[@"textMessages"][tempValue.count - 1];
+             
+              NSString * temp = message[@"textMessages"][tempValue.count - 1];
+              temp = [temp substringToIndex:temp.length - 1];
+              cell.messageLabel.text = temp;
          }];
      }];
     return cell;
@@ -114,6 +119,17 @@
 {
     [self performSegueWithIdentifier:@"availableAssistant" sender:nil];
 }
+
+- (IBAction)didTapLogout:(id)sender
+{
+    [PFUser logOutInBackgroundWithBlock:^(NSError * _Nullable error) {
+        AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"SignUp" bundle:nil];
+        loginViewController *loginViewController = [storyboard instantiateViewControllerWithIdentifier:@"loginViewController"];
+        appDelegate.window.rootViewController = loginViewController;
+    }];
+}
+
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {

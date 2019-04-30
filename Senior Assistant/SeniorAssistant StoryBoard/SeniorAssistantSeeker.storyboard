@@ -62,7 +62,6 @@
                                 </prototypes>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="40s-qu-Nvk"/>
                     </view>
                     <navigationItem key="navigationItem" title="Recent Messages" id="jD7-5z-zeJ">
@@ -292,7 +291,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="oTI-cF-htF"/>
+        <segue reference="cSX-Tl-HmK"/>
         <segue reference="6ui-i1-qYL"/>
         <segue reference="fa5-tG-LHb"/>
     </inferredMetricsTieBreakers>

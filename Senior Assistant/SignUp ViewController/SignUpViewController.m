@@ -42,6 +42,7 @@
         NSArray * arrayForRole = @[@"AssistantSeeker", @"AssistantProvider"];
         NSString * role = arrayForRole[self.roleSegment.selectedSegmentIndex];
         newUser[@"role"] = role;
+        newUser[@"location"] = @"0.1miles";
     
         [newUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError * error)
          {

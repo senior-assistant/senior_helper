@@ -185,6 +185,7 @@
                      temp = [temp substringToIndex:temp.length - 1];
                      cell.messageTextView.textAlignment = NSTextAlignmentLeft;
                      cell.messageTextView.text = temp;
+                     [cell setBackgroundColor:[UIColor blackColor]];
                  }
                  else
                  {

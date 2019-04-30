@@ -38,7 +38,7 @@
                                     <action selector="didTapLogin:" destination="IQT-Yy-Ciz" eventType="touchUpInside" id="KwK-Jn-wvD"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Senior Assistant" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qbK-kG-VRI">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Care For Seniors" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qbK-kG-VRI">
                                 <rect key="frame" x="76" y="540" width="222" height="47"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="27"/>
@@ -57,10 +57,10 @@
             </objects>
             <point key="canvasLocation" x="-282.39999999999998" y="-92.203898050974516"/>
         </scene>
-        <!--Storyboard Reference-->
+        <!--SignUp-->
         <scene sceneID="wVq-Gn-2Fo">
             <objects>
-                <viewControllerPlaceholder id="1q9-Kr-LBy" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="SignUp" id="1q9-Kr-LBy" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bFk-G3-fzE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="631" y="-105"/>

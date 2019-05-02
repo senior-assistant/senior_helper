@@ -13,6 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface AvailableAssistantsCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *distanceLabel;
 
 @end
 

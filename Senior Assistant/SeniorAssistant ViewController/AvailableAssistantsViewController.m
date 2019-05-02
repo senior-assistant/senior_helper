@@ -54,6 +54,7 @@
     [query whereKey:@"role" equalTo:@"AssistantProvider"];
     NSArray * results = [query findObjects];
     cell.nameLabel.text = results[indexPath.row][@"username"];
+    cell.distanceLabel.text = results[indexPath.row][@"location"];
     
     return cell;
 }

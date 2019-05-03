@@ -26,9 +26,13 @@
     [super viewDidLoad];
     self.providerMessageTableView.dataSource = self;
     self.providerMessageTableView.delegate = self;
+    self.providerMessageTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
     self.providerMessageCount = [[NSArray alloc] init];
     [self dataFetcher];
+    [self cellOffsetCorrector];
+    self.providerMessageTableView.rowHeight = UITableViewAutomaticDimension;
+    self.providerMessageTableView.estimatedRowHeight = 2000;
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self action:@selector(dataFetcher) forControlEvents:UIControlEventValueChanged];
     [self.providerMessageTableView addSubview:self.refreshControl];
@@ -37,6 +41,15 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
+}
+
+-(void) cellOffsetCorrector
+{
+    if (self.providerMessageTableView.contentSize.height > self.providerMessageTableView.frame.size.height)
+    {
+        CGPoint offset = CGPointMake(0, self.providerMessageTableView.contentSize.height - self.providerMessageTableView.frame.size.height);
+        [self.providerMessageTableView setContentOffset:offset animated:YES];
+    }
 }
 
 -(void) dataFetcher

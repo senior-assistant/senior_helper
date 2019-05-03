@@ -135,7 +135,7 @@
 {
     if([segue.identifier isEqualToString:@"toMessageSegue"])
     {
-        UINavigationController * navigationController = [segue destinationViewController];;
+        UINavigationController * navigationController = [segue destinationViewController];
         MessgingViewController * messgingViewController = (MessgingViewController*) navigationController.topViewController;
         messgingViewController.receiverUserName = self.receiverName;
     }

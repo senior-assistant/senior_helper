@@ -10,5 +10,5 @@
 
 @interface mesageViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UITextView *messageTextView;
-
+@property (weak, nonatomic) IBOutlet UIView *cellView;
 @end

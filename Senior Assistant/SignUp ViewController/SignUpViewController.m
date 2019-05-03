@@ -68,43 +68,47 @@
                  NSLog(@"User registered successfully");
                  PFUser *registerUser = [PFUser currentUser];
                  PFRelation *relation = [registerUser relationForKey:@"texts"];
-                 [registerUser save];
-                 
-                 if ([role isEqualToString:@"AssistantSeeker"])
-                 {
-                     [self performSegueWithIdentifier:@"seekerSegue" sender:nil];
-                 }
-                 else
-                 {
-                     [self performSegueWithIdentifier:@"providerSegue" sender:nil];
-                 }
-//                 [messages saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error)
-//                  {
-//                      if (succeeded)
-//                      {
-//                          NSLog(@"Object saved!");
-//                      }
-//                      else
-//                      {
-//                          NSLog(@"Error: %@", error.description);
-//                      }
-//                  }];
-        
-//                 [registerUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error)
+//                 [registerUser save];
+//
+//                 if ([role isEqualToString:@"AssistantSeeker"])
 //                 {
-//                      if (succeeded)
-//                      {
-//                         // The post has been added to the user's likes relation.
-//                           NSLog(@"succeeded");
-//                           [messages save];
-//                           [self performSegueWithIdentifier:@"seekerSegue" sender:nil];
-//                      }
-//                      else
-//                      {
-//                          // There was a problem, check error.description
-//                          NSLog(@"error");
-//                      }
-//                  }];
+//                     [self performSegueWithIdentifier:@"seekerSegue" sender:nil];
+//                 }
+//                 else
+//                 {
+//                     [self performSegueWithIdentifier:@"providerSegue" sender:nil];
+//                 }
+////                 [messages saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error)
+////                  {
+////                      if (succeeded)
+////                      {
+////                          NSLog(@"Object saved!");
+////                      }
+////                      else
+////                      {
+////                          NSLog(@"Error: %@", error.description);
+////                      }
+////                  }];
+//
+                 [registerUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error)
+                 {
+                      if (succeeded)
+                      {
+                             if ([role isEqualToString:@"AssistantSeeker"])
+                             {
+                                 [self performSegueWithIdentifier:@"seekerSegue" sender:nil];
+                             }
+                             else
+                             {
+                                 [self performSegueWithIdentifier:@"providerSegue" sender:nil];
+                             }
+                      }
+                      else
+                      {
+                          // There was a problem, check error.description
+                          NSLog(@"error");
+                      }
+                  }];
              }
          }];
 }

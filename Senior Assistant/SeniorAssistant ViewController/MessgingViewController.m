@@ -13,6 +13,7 @@
 #import "ProviderMessageViewController.h"
 #import "AssistantSeekerViewController.h"
 #import "AvailableAssistantsViewController.h"
+#import "MessageDetailViewController.h"
 
 @interface MessgingViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (strong, nonatomic) NSMutableArray * messageArray;
@@ -20,6 +21,7 @@
 -(PFObject*) createObject;
 -(void) updateMessage:(PFObject *) result;
 -(void) dataFetcher;
+-(void) cellOffsetCorrector;
 @end
 
 @implementation MessgingViewController
@@ -29,17 +31,31 @@
     [super viewDidLoad];
     self.messageTableView.dataSource = self;
     self.messageTableView.delegate = self;
+    self.messageTableView.allowsSelection=YES;
     self.messageArray = [[NSMutableArray alloc] init];
     [self dataFetcher];
+    [self cellOffsetCorrector];
     
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self action:@selector(dataFetcher) forControlEvents:UIControlEventValueChanged];
     [self.messageTableView addSubview:self.refreshControl];
+    self.messageTableView.rowHeight = UITableViewAutomaticDimension;
+    self.messageTableView.estimatedRowHeight = 2000;
+
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
+}
+
+-(void) cellOffsetCorrector
+{
+    if (self.messageTableView.contentSize.height > self.messageTableView.frame.size.height)
+    {
+        CGPoint offset = CGPointMake(0, (self.messageTableView.contentSize.height - self.messageTableView.frame.size.height) + 23);
+        [self.messageTableView setContentOffset:offset animated:YES];
+    }
 }
 
 -(void) dataFetcher
@@ -185,7 +201,8 @@
                      temp = [temp substringToIndex:temp.length - 1];
                      cell.messageTextView.textAlignment = NSTextAlignmentLeft;
                      cell.messageTextView.text = temp;
-                     [cell setBackgroundColor:[UIColor blackColor]];
+                     cell.cellView.layer.cornerRadius = 16;
+                     cell.cellView.clipsToBounds = true;
                  }
                  else
                  {
@@ -196,25 +213,28 @@
              }];
          }
      }];
-
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    self.messageString =  self.messageArray[indexPath.row];
+    [self performSegueWithIdentifier:@"detailMessageView" sender:nil];
 }
 
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-      return self.messageArray.count;
+    return self.messageArray.count;
 }
 
-/*
- #pragma mark - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
- }
- */
-
-
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"detailMessageView"])
+    {
+        MessageDetailViewController * detailViewController = [segue destinationViewController];
+        detailViewController.detailMessageView.text = self.messageString;
+        detailViewController.detailMessageStringValue = self.messageString;
+    }
+}
 
 @end

@@ -29,6 +29,7 @@
 		625546512273413B008E085F /* loginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 625546502273413B008E085F /* loginViewController.m */; };
 		62901017227809A800091A6E /* InterstitalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 62901016227809A800091A6E /* InterstitalViewController.m */; };
 		62C9344722776F55007A62A3 /* Interstitial.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62C9344622776F55007A62A3 /* Interstitial.storyboard */; };
+		62CD1241227C77ED005EBF12 /* MessageDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 62CD1240227C77ED005EBF12 /* MessageDetailViewController.m */; };
 		BA3BE48183853B952ABE8647 /* libPods-Senior Assistant.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C8D6F7653A60342ED2B65B5 /* libPods-Senior Assistant.a */; };
 		F1A7AEB024F1D26EAC603437 /* libPods-Senior AssistantUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A849B2E17FD628E868161C4 /* libPods-Senior AssistantUITests.a */; };
 		FFC99B6917B4277FDBD74AA1 /* libPods-Senior AssistantTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C8DF64CCF1F098422599653 /* libPods-Senior AssistantTests.a */; };
@@ -98,6 +99,8 @@
 		62901015227809A800091A6E /* InterstitalViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InterstitalViewController.h; sourceTree = "<group>"; };
 		62901016227809A800091A6E /* InterstitalViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InterstitalViewController.m; sourceTree = "<group>"; };
 		62C9344622776F55007A62A3 /* Interstitial.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Interstitial.storyboard; sourceTree = "<group>"; };
+		62CD123F227C77ED005EBF12 /* MessageDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MessageDetailViewController.h; sourceTree = "<group>"; };
+		62CD1240227C77ED005EBF12 /* MessageDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MessageDetailViewController.m; sourceTree = "<group>"; };
 		67DE7FD596DA6F3A1075FBC3 /* Pods-Senior Assistant.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Senior Assistant.release.xcconfig"; path = "Pods/Target Support Files/Pods-Senior Assistant/Pods-Senior Assistant.release.xcconfig"; sourceTree = "<group>"; };
 		683FDBF19D2484309C008055 /* Pods-Senior AssistantTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Senior AssistantTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Senior AssistantTests/Pods-Senior AssistantTests.release.xcconfig"; sourceTree = "<group>"; };
 		E3A13B4750AE2CA5DFBFF0EA /* Pods-Senior Assistant.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Senior Assistant.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Senior Assistant/Pods-Senior Assistant.debug.xcconfig"; sourceTree = "<group>"; };
@@ -136,9 +139,9 @@
 			isa = PBXGroup;
 			children = (
 				378B5AB82262CD1500CD77C9 /* RecentMessagesCell.h */,
+				378B5AB92262CD1500CD77C9 /* RecentMessagesCell.m */,
 				624AFDB6226D355F007C9D89 /* ProviderMessageViewCell.h */,
 				624AFDB7226D355F007C9D89 /* ProviderMessageViewCell.m */,
-				378B5AB92262CD1500CD77C9 /* RecentMessagesCell.m */,
 				378B5ABB2262F5CB00CD77C9 /* AvailableAssistantsCell.h */,
 				378B5ABC2262F5CB00CD77C9 /* AvailableAssistantsCell.m */,
 				621CF2B32266C69E009103AA /* mesageViewCell.h */,
@@ -221,6 +224,8 @@
 				62C9344622776F55007A62A3 /* Interstitial.storyboard */,
 				62901015227809A800091A6E /* InterstitalViewController.h */,
 				62901016227809A800091A6E /* InterstitalViewController.m */,
+				62CD123F227C77ED005EBF12 /* MessageDetailViewController.h */,
+				62CD1240227C77ED005EBF12 /* MessageDetailViewController.m */,
 			);
 			path = "SeniorAssistant ViewController";
 			sourceTree = "<group>";
@@ -491,6 +496,7 @@
 				624AFDB8226D355F007C9D89 /* ProviderMessageViewCell.m in Sources */,
 				378B5ABA2262CD1500CD77C9 /* RecentMessagesCell.m in Sources */,
 				62277C50225D824700B07F67 /* AssistantProviderViewController.m in Sources */,
+				62CD1241227C77ED005EBF12 /* MessageDetailViewController.m in Sources */,
 				378B5ABD2262F5CB00CD77C9 /* AvailableAssistantsCell.m in Sources */,
 				62183493225D45DD0003B79C /* main.m in Sources */,
 				621CF2B52266C69E009103AA /* mesageViewCell.m in Sources */,
